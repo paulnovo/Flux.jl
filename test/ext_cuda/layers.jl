@@ -105,9 +105,7 @@ for act in ACTIVATIONS
   batch_norm = [BatchNorm, BatchNormNoTrackStats]
   gpu_gradtest("BatchNorm 1 with $act", batch_norm, rand(Float32, 28,28,3,4), 3, act, test_cpu = false) #TODO fix errors
   gpu_gradtest("BatchNorm 2 with $act", batch_norm, rand(Float32, 5,4), 5, act, test_cpu = true)
-
-  batch_norm = [BatchNormNoTrackStats]
-  gpu_gradtest("BatchNorm 3 with $act (test mode)", batch_norm, rand(Float32, 5,4), 5, act, test_cpu = true, test_mode = true)
+  gpu_gradtest("BatchNorm 2 with $act (test mode)", batch_norm, rand(Float32, 5,4), 5, act, test_cpu = true, test_mode = true)
 
   instancenorm = [InstanceNorm]
   gpu_gradtest("InstanceNorm with $act", instancenorm, r, 1, act, test_cpu = false)
